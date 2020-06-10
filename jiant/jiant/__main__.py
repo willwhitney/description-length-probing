@@ -342,6 +342,7 @@ def initial_setup(args, cl_args):
     """
     output = io.StringIO()
     maybe_make_dir(args.project_dir)  # e.g. /nfs/jsalt/exp/$HOSTNAME
+    # import  ipdb; ipdb.set_trace()
     maybe_make_dir(args.exp_dir)  # e.g. <project_dir>/jiant-demo
     maybe_make_dir(args.run_dir)  # e.g. <project_dir>/jiant-demo/sst
     log_fh = log.FileHandler(args.local_log_path)

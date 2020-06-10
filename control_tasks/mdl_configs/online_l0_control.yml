@@ -12,13 +12,13 @@ dataset:
      - extra_info
      - embeddings
   corpus:
-    root: ..      # CHANGE THIS: path to the folder with ptb3-wsj-*.conllx files
+    root: ../control_tasks_data      # CHANGE THIS: path to the folder with ptb3-wsj-*.conllx files
     train_path: ptb3-wsj-train.conllx
     dev_path: ptb3-wsj-dev.conllx
     test_path: ptb3-wsj-test.conllx
   embeddings:
-    type: token 
-    root: ..      # CHANGE THIS: path to the folder with raw*..elmo-layers.hdf5 files
+    type: token
+    root: ../control_tasks_data      # CHANGE THIS: path to the folder with raw*..elmo-layers.hdf5 files
     train_path: raw.train.elmo-layers.hdf5
     dev_path: raw.dev.elmo-layers.hdf5
     test_path: raw.test.elmo-layers.hdf5
@@ -26,14 +26,14 @@ dataset:
   dataset_size: 40000
 model:
   hidden_dim: 1024 # ELMo hidden dim
-  model_type: ELMo-disk 
+  model_type: ELMo-disk
   use_disk: True
   model_layer: 0 # ELMo: {0, 1, 2}  # CHANGE THIS: insert your layer
 regimen:
   type: online_coding # none, bayes, online_coding
-  inds: 0.001,0.002,0.004,0.008,0.016,0.032,0.0625,0.125,0.25,0.5,1
+  inds: 0.0000625,0.000125,0.00025,0.0005,0.001,0.002,0.004,0.008,0.016,0.032,0.0625,0.125,0.25,0.5,1
 probe:
-  task_signature: word_label 
+  task_signature: word_label
   type: none # none
   task_name: corrupted-part-of-speech
   maximum_rank: 1000                # CHANGE THIS (IF YOU REALLY WANT)
@@ -53,7 +53,7 @@ probe_training:
   weight_decay: 0.0
   learning_rate: 0.001
 reporting:
-  fixed_directory: online_l0_control   # CHANGE THIS: output dir with ckpts and logs
+  fixed_directory: ../dummy   # CHANGE THIS: output dir with ckpts and logs
   root: .
   observation_paths:
     train_path: train.observations
@@ -62,7 +62,7 @@ reporting:
   prediction_paths:
     train_path: train.predictions
     dev_path: dev.predictions
-    test_path: test.predictionsl
+    test_path: test.predictions
   reporting_methods:
     - label_accuracy
 
